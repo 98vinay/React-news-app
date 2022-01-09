@@ -1,16 +1,19 @@
 import React  from 'react';
+import TopRibbon from "../../components/TopRibbon/topRibbon";
+import Header from '../../components/Header/header';
+import TopHeadline from '../../components/TopHeadline/topHeadine';
 
 class Home extends React.Component{
     render() {
         return (
             <div>
-                ...topribbon
-                ...logo
-                <header>
-                    <h1>test</h1>
-                </header>
+                <TopRibbon />
+                <Header />
                 <main>
-                    <p>test</p>
+                    <TopHeadline name="health"/>
+                    <TopHeadline name="business" />
+                    <TopHeadline name="technology" />
+                    <TopHeadline name="sports" />
                 </main>
                 <footer>
 
