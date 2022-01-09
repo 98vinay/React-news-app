@@ -1,5 +1,6 @@
 import React from 'react'
 import Logo from '../Logo/logo';
+import {NavLink} from 'react-router-dom';
 function Header() {
     const links = [
         {
@@ -8,25 +9,33 @@ function Header() {
         },
         {
             name: 'Health',
-            path: '/'
+            path: '/health'
         },
         {
             name: 'Business',
-            path: '/'
+            path: '/business'
         },
         {
             name: 'Technology',
-            path: '/'
+            path: '/technology'
         },
         {
             name: 'Sports',
-            path: '/'
+            path: '/sports'
         },
     ]
     const navLinks = (
         links.map((ele)=> {
             return (
-                <li key={ele.name}><a href={ele.path}>{ele.name}</a></li>
+                <li key={ele.name}>
+                    <NavLink to={ele.path}
+                    className={status => {
+                        if(status.isActive){
+                            return 'activeLink';
+                        }
+                    } }
+                    >{ele.name}</NavLink>
+                </li>
             )
         }) 
     );

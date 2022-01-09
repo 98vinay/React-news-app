@@ -30,7 +30,7 @@ function TopRibbon() {
     },[]);
     const links = (
         socialMedia.map((ele) => {
-            return <SocialMedia href={ele.href} class= {ele.class} />
+            return <SocialMedia href={ele.href} class= {ele.class} key={ele.class}/>
         })
     );
     return (
