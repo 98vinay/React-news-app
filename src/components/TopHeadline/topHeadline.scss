@@ -34,6 +34,7 @@
             background-position: center;
             position: relative;
             min-height: 400px;
+            cursor: pointer;
             
 
             &__desc {
@@ -76,9 +77,6 @@
                     margin-right: 2px;
                 }
 
-                &:hover {
-                    background-color: rgba(0,0,0,1);
-                }
                 @media (min-width: 768px) {
                     padding: 10px 15px 10px 8px;
 
@@ -86,6 +84,12 @@
             }
             @media (min-width:768px) {
                 min-height: 300px;
+            }
+
+            &:hover {
+                .grid-article__desc {
+                    background-color: rgba(0,0,0,1);
+                }
             }
         }
         @media (min-width:768px) {

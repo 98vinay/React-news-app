@@ -12,19 +12,23 @@ function Header() {
         },
         {
             name: 'Health',
-            path: '/health'
+            path: '/articlesList/health'
         },
         {
             name: 'Business',
-            path: '/business'
+            path: '/articlesList/business'
         },
         {
             name: 'Technology',
-            path: '/technology'
+            path: '/articlesList/technology'
         },
         {
             name: 'Sports',
-            path: '/sports'
+            path: '/articlesList/sports'
+        },
+        {
+            name: 'Search',
+            path: '/search'
         },
     ]
     const navLinks = (

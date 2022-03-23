@@ -6,10 +6,10 @@ class Home extends React.Component{
     render() {
         return (
             <Aux>
-                <TopHeadline name="health"/>
-                <TopHeadline name="business" />
-                <TopHeadline name="technology" />
-                <TopHeadline name="sports" />
+                <TopHeadline articleName="health"/>
+                <TopHeadline articleName="business" />
+                <TopHeadline articleName="technology" />
+                <TopHeadline articleName="sports" />
             </Aux>
         )
     }

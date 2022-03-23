@@ -1,46 +1,46 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-import { useLocation } from 'react-router-dom';
-
-export const  withNavigation = (Component) => {
-    return props => <Component {...props} navigate={useLocation()} />;
-  }
+import {Navigate} from 'react-router'
 class DetailPage extends React.Component {
     state = {
-        articeNews: {}
+        navigateUser: false,
     }
     componentDidMount() {
-        const dataReceived = this.props.navigate.state;
-        if(dataReceived) {
-            this.setState({
-                articeNews:dataReceived
-            })
-        }
+        (Object.keys(this.props.article).length === 0)  && this.setState({
+            navigateUser: true
+        })
     }
 
     render() {
         return(
-            <article className='newsarticle'>
-                <h2 className='newsarticle__title'>{this.state.articeNews.title}</h2>
+            this.state.navigateUser ? <Navigate to="/" /> :
+            (<article className='newsarticle'>
+                <h2 className='newsarticle__title'>{this.props.article.title}</h2>
                 <div className='newsarticle__img-container'>
-                    <img src={this.state.articeNews.urlToImage} alt='article-pic' />
+                    <img src={this.props.article.urlToImage} alt='article-pic' />
                     <ul>
                         <li>
-                            <i className='fas fa-user'> </i>{this.state.articeNews.author} 
+                            <i className='fas fa-user'> </i>{this.props.article.author} 
                         </li>
                         <li>
-                            <i className='fas fa-clock'></i>{this.state.articeNews.publishedAt}</li>
+                            <i className='fas fa-clock'></i>{this.props.article.publishedAt}</li>
                     </ul>
                 </div>
                 <div className='newsarticle__desc'>
-                    <p>{this.state.articeNews.description}</p>
-                    <p>{this.state.articeNews.content}</p>
+                    <p>{this.props.article.description}</p>
+                    <p>{this.props.article.content}</p>
                 </div>
                 <div className='newsarticle__controls'>
-                    <a href={this.state.articeNews.url} target="_blank" rel='noreferrer'>Read More</a>
+                    <a href={this.props.article.url} target="_blank" rel='noreferrer'>Read More</a>
                 </div>
-            </article>
+            </article>)
         )
     }
 }
-export default withNavigation(DetailPage);
+const mapStateToProps = (state)=> {
+    return {
+        article: state.detailsPage.storedArticle
+    }
+}
+export default connect(mapStateToProps, null)(DetailPage);

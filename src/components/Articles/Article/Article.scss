@@ -1,0 +1,102 @@
+.article__card {
+    border: 1px solid black;
+    padding: 0px 15px;
+    background-color: #000;
+    cursor: pointer;
+    transition: hover 0.2s ease-in;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+
+    &-header{
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0px;
+        align-items: center;
+
+        p {
+            font-size: 14px;
+            color: #ee9b0c;
+            text-transform: capitalize;
+            flex: 70%;
+            word-break: break-all;
+            span {
+                margin-left: 5px;
+            }
+
+            @media (min-width:768px) {
+                font-size: 16px;
+            }
+        }
+
+        button {
+            background-color: #7edffa;
+            color: #000;
+            border: 1px solid #fff;
+            padding: 5px;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 23px;
+            min-width: 100px;
+            flex: 20%;
+            display: inline-block;
+            cursor: pointer;
+            @media (min-width:768px) {
+                font-size: 16px;
+            }
+        }
+    }
+
+    &-image{
+        min-height: 320px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    &-description {
+        .title {
+            font-size: 20px;
+            color: #fff;
+            margin-top: 10px;
+            font-weight: 700;
+            @media (min-width:768px) {
+                font-size: 24px;
+            }
+        }
+
+        .desc {
+            font-size: 16px;
+            color: #d4d0d0;
+            margin-top: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            @media (min-width:768px) {
+                font-size: 18px;
+            }
+
+        }
+    }
+    &-footer{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0px;
+        align-items: center;
+        p {
+            color: #ee9b0c;
+            span {
+                font-size: 14px;
+                margin-left: 5px;
+
+                @media (min-width:768px) {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

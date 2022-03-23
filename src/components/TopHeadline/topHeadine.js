@@ -1,34 +1,28 @@
-import React,{useEffect,useState} from 'react';
-import axios from 'axios';
+import React,{useEffect} from 'react';
 import {useNavigate} from 'react-router';
 import IsMobile from '../../utilities/Device/Device';
 import { Carousel } from 'react-responsive-carousel';
+import {connect} from 'react-redux';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import * as actions from '../../store/actions/index';
+import Loader from '../../utilities/Loader/Loader';
 function TopHeadline (props) {
-    const {name} = props;
-    const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=2468eac1ea8941819f11e76526b3dc83&category=${props.name}&pageSize=4`;
-    const [articles,setArticles] = useState([]);
+    const {articleName , onLoad, articles} = props;
     const navigate = useNavigate();
+    const articlePulled = articles[articleName].length;
     useEffect(()=> {
-        axios.get(url).then((res)=>{
-            const data = res.data;
-            if(data.status === 'ok') {
-                setArticles([...data.articles]);
-            }
-        })
-    },[name,url])
+        articlePulled === 0 && onLoad(articleName)
+    },[articleName,onLoad , articlePulled])
     const getTime = (time)=> {
         const date = new Date(time);
         return date.toLocaleString();
     }
     const handleArticleClick = (data) => {
-        navigate("/details",{
-            state: data
-        });
-        
+        props.openArticle(data);
+        navigate("/details");    
     }
     const articlesList= (
-        articles.map((ele) => {
+        articles[articleName].slice(0,4).map((ele) => {
             const backgroundImage = `url("${ele.urlToImage}")`;
             return (
                 <div key={ele.title} className='grid-article' style={{backgroundImage:backgroundImage}} onClick={()=>handleArticleClick(ele) }>
@@ -59,14 +53,28 @@ function TopHeadline (props) {
         <section className='news'>
             <div className='news__container'>
                 <div className='news__header'>
-                    <h2>{props.name}</h2>
+                    <h2>{props.articleName}</h2>
                     <button>View More</button>
                 </div>
-                <div className='news__grid'>
-                    {articles.length>0? list:''}
-                </div>
+                {props.loading ? <Loader /> : 
+                (<div className='news__grid'>
+                    {props.articles[articleName].length>0? list:''}
+                </div>)}
             </div>
         </section>
     );
 }
-export default TopHeadline;
+const mapStateToProps = (state) => {
+    return {
+        loading: state.fetchItems.loading,
+        articles:state.fetchItems.articles
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      onLoad: (articleName)=> dispatch(actions.fetchNewsInit(articleName)),
+      openArticle: (article) => dispatch(actions.storeArticle(article))
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(TopHeadline);
