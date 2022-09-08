@@ -11,4 +11,6 @@ export {
   searchFail,
   searchEnd,
   SearchResults,
+  setSearchPage,
+  clearSearchData,
 } from "./searchAction";

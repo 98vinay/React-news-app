@@ -3,10 +3,12 @@ import axios from "axios";
 import * as actions from "../actions/index";
 export function* searchSaga(action) {
   let searchTerm = action.term;
+  let currentPage = action.pageNo;
   let articles = [];
   let totalResults;
-  let url = `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=2468eac1ea8941819f11e76526b3dc83&pageSize=30`;
+  let url = `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=2468eac1ea8941819f11e76526b3dc83&pageSize=9&page=${currentPage}`;
   yield put(actions.searchStart());
+  yield put(actions.setSearchPage(searchTerm, currentPage));
   try {
     const res = yield axios.get(url);
     const data = res.data;

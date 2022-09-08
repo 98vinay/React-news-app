@@ -4,6 +4,8 @@ const initialstate = {
   articles: [],
   errorMessage: "",
   totalCount: 0,
+  currentPage: 1,
+  searchText: "",
 };
 
 export default function searchPageReducer(state = initialstate, action) {
@@ -34,6 +36,20 @@ export default function searchPageReducer(state = initialstate, action) {
       return {
         ...state,
         totalCount: action.totalCount,
+      };
+    case actionTypes.SEARCH_SET_PAGE:
+      return {
+        ...state,
+        searchText: action.text,
+        currentPage: action.currPage,
+      };
+    case actionTypes.SEARCH_CLEAR_DATA:
+      return {
+        ...state,
+        searchText: "",
+        currentPage: 1,
+        articles: [],
+        totalCount: 0,
       };
     default:
       return state;

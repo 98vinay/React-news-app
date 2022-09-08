@@ -9,8 +9,9 @@ import * as actions from "../../../store/actions/index";
 function TextFieldComponent(props) {
   const [errorState, setErrorState] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  let currentPage = 1;
   const inputChangeHandler = (event) => {
-    const searchValue = event.target.value.trim();
+    const searchValue = event.target.value;
     setSearchTerm(searchValue);
   };
   const formSubmitHandler = (e) => {
@@ -19,7 +20,7 @@ function TextFieldComponent(props) {
       setErrorState(true);
     } else {
       setErrorState(false);
-      props.onSearchSubmit(searchTerm);
+      props.onSearchSubmit(searchTerm, currentPage);
     }
   };
   return (
@@ -51,7 +52,8 @@ function TextFieldComponent(props) {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchSubmit: (text) => dispatch(actions.searchInit(text)),
+    onSearchSubmit: (text, pageNo) =>
+      dispatch(actions.searchInit(text, pageNo)),
   };
 };
 export default connect(null, mapDispatchToProps)(TextFieldComponent);

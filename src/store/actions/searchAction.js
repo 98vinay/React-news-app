@@ -1,41 +1,56 @@
-import * as actions from "./actionTypes";
+import * as actionTypes from "./actionTypes";
 
-export function searchInit(data) {
+export function searchInit(data, currPage) {
   return {
-    type: actions.SEARCH_INIT,
+    type: actionTypes.SEARCH_INIT,
     term: data,
+    pageNo: currPage,
   };
 }
 
 export function searchStart() {
   return {
-    type: actions.SEARCH_START,
+    type: actionTypes.SEARCH_START,
   };
 }
 
 export function SearchResults(count) {
   return {
-    type: actions.SEARCH_RESULTS,
+    type: actionTypes.SEARCH_RESULTS,
     totalCount: count,
   };
 }
 
 export function searchSuccess(data) {
   return {
-    type: actions.SEARCH_SUCCESS,
+    type: actionTypes.SEARCH_SUCCESS,
     payload: data,
   };
 }
 
 export function searchFail(err) {
   return {
-    type: actions.SEARCH_FAILURE,
+    type: actionTypes.SEARCH_FAILURE,
     message: err,
   };
 }
 
 export function searchEnd() {
   return {
-    type: actions.SEARCH_END,
+    type: actionTypes.SEARCH_END,
+  };
+}
+
+export function setSearchPage(text, pageNo) {
+  return {
+    type: actionTypes.SEARCH_SET_PAGE,
+    text,
+    currPage: pageNo,
+  };
+}
+
+export function clearSearchData() {
+  return {
+    type: actionTypes.SEARCH_CLEAR_DATA,
   };
 }
