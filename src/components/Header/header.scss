@@ -1,0 +1,104 @@
+.header {
+    padding: 2px 0px;
+    color: #ffffff;
+    background-color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__logo {
+        flex: 45%;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        h1 {
+            margin: 10px 0;
+            font-size: 20px;
+            font-weight: 500;
+        }
+        @media only screen and (min-width:992px) {
+            flex: 30%;
+            display: block;
+            h1 {
+                margin: 10px 0px;
+                font-size: 40px;
+                font-weight: 500;
+
+            }
+        }
+    }
+    &__nav {
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 50px;
+
+        ul {
+            text-align: center;
+            li {
+                font-size: 40px;
+                padding: 20px 0px;
+                border-bottom: 1px solid #ffffff;
+
+                a {
+                    text-decoration: none;
+                    color: #ffffff;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
+
+                &:last-child {
+                    border: none;
+                }
+            }
+        }
+
+        @media only screen and (min-width:992px) {
+            display: block;
+            flex: 70%;
+            width: 100%;
+            margin: 0;
+
+            ul {   
+                display: flex;
+                justify-content:  space-evenly;
+                align-items: center;
+                
+                li {
+                    font-size: 18px;
+                    padding: 0px;
+                    border-bottom: none;
+
+                    a {
+                        text-decoration: none;
+                        color: #ffffff;
+                        font-weight: 500;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            .activeLink{
+                border-bottom: 1px solid #ffffff;
+            }
+        }
+    }
+
+    &__mob {
+        flex: 45%;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        &-icon {
+            font-size: 30px;
+            color: #ffffff;
+        }
+
+        @media only screen and (min-width:992px) {
+            display: none;
+        }
+    }
+    
+    @media only screen and (min-width:992px) {
+        justify-content: flex-start;
+    }
+}

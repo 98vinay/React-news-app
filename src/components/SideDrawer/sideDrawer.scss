@@ -1,0 +1,46 @@
+.sidedrawer {
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100vh;
+    color: #ffffff;
+    background-color: #000000;
+    z-index: 100;
+    transition: transform 0.3s ease-in;
+    transform: translateY(-100%);
+
+    &__close-container {
+        margin: 25px 15px;
+        @media  (min-width:992px) {
+            display: none;
+        }
+    }
+
+    &__close {
+        padding: 5px;
+        display: inline-block;
+        font-size: 30px;
+        color: #ffffff;
+    }
+
+    @media  (min-width:992px) {
+        position: relative;
+        height: auto;
+        z-index: 0;
+        transform: translateX(0);
+    }
+}
+
+.open {
+    transform: translateX(0);
+    @media  (min-width:992px) {
+        transform: translateX(0);
+    }
+}
+.close {
+    transform: translateX(-100%);
+    @media  (min-width:992px) {
+        transform: translateX(0);
+    }
+}

@@ -1,0 +1,67 @@
+.topribbon {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__time{
+        text-align: center;
+        font-size: 16px;
+        margin: 10px;
+        @media only screen and (min-width:768px) {
+            text-align: left;
+        }
+    }
+
+    &__socialmedia {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style-type: none;
+
+        li {
+            border-radius: 50%;
+            border: 1px solid #ffffff;
+            padding: 5px;
+            background-color: #ffffff; 
+            height: 30px;
+            width: 30px;
+            margin-left:  10px;
+            text-align: center;
+
+            &:first-child {
+                margin-left: 0px;
+            }
+            a {
+                display: block;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                text-decoration: none;
+                
+            }
+            i {
+                display: block;
+                font-size: 20px;
+                color: black;
+            }
+        }
+
+        @media only screen and (min-width:768px) {
+            padding: 0px 5px;
+        }
+
+    }
+
+    @media only screen and (min-width:768px) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
