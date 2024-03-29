@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Steps
+
+1. git clone https://github.com/98vinay/React-news-app.git
+2. cd to the folder
+3. run npm i
+4. run npm start
+
 ## Available Scripts
 
 In the project directory, you can run:
